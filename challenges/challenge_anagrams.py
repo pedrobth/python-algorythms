@@ -60,7 +60,6 @@ def slow_str_to_dict(lista):
 
     return dic
 
-
 #  0.21519 ~ 0.21801 seconds
 def remove_chars(first_string, second_string):
     for letter in first_string:
@@ -118,9 +117,52 @@ def quicksort_str(array, low, high):
     return array
 
 
+
+# 3.419441 seconds complexity O(nlog(n))
+def heapify(str_list, heap_size, root_index):
+    largest = root_index
+    left_child = (2 * root_index) + 1
+    right_child = (2 * root_index) + 2
+
+    if left_child < heap_size and str_list[left_child] > str_list[largest]:
+        largest = left_child
+
+    if right_child < heap_size and str_list[right_child] > str_list[largest]:
+        largest = right_child
+
+    if largest != root_index:
+        str_list[root_index], str_list[largest] = str_list[largest], str_list[root_index]
+        heapify(str_list, heap_size, largest)
+def heap_st(string):
+    n = len(string)
+    str_list = list(string)
+
+    for i in range(n, -1, -1):
+        heapify(str_list, n, i)
+
+    for i in range(n - 1, 0, -1):
+        str_list[i], str_list[0] = str_list[0], str_list[i]
+        heapify(str_list, i, 0)
+def heap_sort(first_string, second_string):
+    return heap_st(first_string) == heap_st(second_string)
+
+
+def insertion_s(x):
+    for i in range(1, len(x)):
+        item_to_insert = x[i]
+        j = i - 1
+        while j >= 0 and x[j] > item_to_insert:
+            x[j + 1] = x[j]
+            j -= 1
+        x[j + 1] = item_to_insert
+# 5.4131 seconds  complexity O(n^2)
+def insertion_sort(first_string, second_string):
+    return insertion_s(list(first_string)) == insertion_s(list(second_string))
+
+
 def selection_sort(first_string, second_string):
     return selection_sort_str(first_string) == selection_sort_str(second_string)
-# 5.7930 ~ 5.82011 seconds
+# 5.7930 ~ 5.82011 seconds complexity O(n^2)
 def selection_sort_str(string):
     str_list = list(string)
     for i in range(len(str_list)):
@@ -131,6 +173,23 @@ def selection_sort_str(string):
         str_list[i], str_list[min_index] = str_list[min_index], str_list[i]
     return str_list
 
+
+
+# 14.596026 seconds
+def b_sort(nums):
+    # We set swapped to True so the loop looks runs at least once
+    swapped = True
+    while swapped:
+        swapped = False
+        for i in range(len(nums) - 1):
+            if nums[i] > nums[i + 1]:
+                # Swap the elements
+                nums[i], nums[i + 1] = nums[i + 1], nums[i]
+                # Set the flag to True so we'll loop again
+                swapped = True
+# 14.596026 seconds complexity O(n^2)
+def bubble_sort(first_string, second_string):
+    return b_sort(list(first_string)) == b_sort(list(second_string))
 
 def is_anagram(first_string, second_string):
     if (
@@ -144,46 +203,10 @@ def is_anagram(first_string, second_string):
     # 0.076248 ~ 0.09043 seconds
     return Counter(first_string) == Counter(second_string)
 
-    #  0.121676 ~ 0.122801 seconds
-    # return remove_chars_list(first_string, second_string)
 
-    # 0.133657 ~ 0.137959
-    """# return s o r t e d(
-        list(first_string)) == list(second_string).s o r t ()"""
-
-    # 0.147181 ~  0.15807
-    """return generate_counter_dict(
-        list(first_string)
-    ) == generate_counter_dict(
-        list(second_string)
-    )"""
-
-    # 0.174338 ~ 0.17686 seconds
-    """return recursive_dict(
-        second_string, {}
-    ) == recursive_dict(
-        first_string, {}
-    )"""
-
-    # 0.163752 ~ 0.184378
-    """return slow_gen_counter_dict(
-        list(first_string)
-    ) == slow_gen_counter_dict(
-        list(second_string)
-    )"""
-
-    #  0.21519 ~ 0.21801 seconds
-    # return remove_chars(first_string, second_string)
-
-    # 0.375300 ~ 0.386072 seconds
-    # return slow_dict(first_string, second_string)
-
-    #  2.41763 ~ 2.47492 seconds
-    # return quicksort(
-    #      list(first_string), 0, len(first_string) - 1
-    #  ) == quicksort(
-    #      list(second_string), 0, len(second_string) - 1
-    #  )
-
-    # 5.7930 ~ 5.82011 seconds
-    # return selection_sort(first_string) == selection_sort(second_string)
+# first_string = (
+#         "Lorem ipsum dolor sit amer, consectetur "
+#         "adipiscing elit, do sed eiusmod tempor "
+#         "incididint ut labore et dolore magna aliqua"
+#     )
+# bucket_sort(first_string, first_string)
