@@ -1,4 +1,4 @@
-from challenges.challenge_anagrams import bubble_sort, insertion_sort, is_anagram, remove_chars_list, generate_counter_dict, recursive_dict, slow_gen_counter_dict, remove_chars, slow_dict, heap_sort, quicksort, selection_sort, merge_sort
+from challenges.challenge_anagrams import bubble_sort, insertion_sort, is_anagram, remove_chars_list, generate_counter_dict, recursive_dict, slow_gen_counter_dict, remove_chars, slow_dict, heap_sort, quicksort, selection_sort, merge_sort, dec_bubble_sort
 import timeit
 
 def test_compare_times():
@@ -15,6 +15,7 @@ def test_compare_times():
     setup_quicksort = "from challenges.challenge_anagrams" " import quicksort"
     setup_merge_sort = "from challenges.challenge_anagrams" " import merge_sort"
     setup_selection_sort = "from challenges.challenge_anagrams" " import selection_sort"
+    setup_dec_bubble_sort = "from challenges.challenge_anagrams" " import dec_bubble_sort"
 
     first_string = (
         "Lorem ipsum dolor sit amer, consectetur adipiscing elit, do sed eiusmod tempor incididint ut labore et dolore magna aliqua"
@@ -126,6 +127,14 @@ def test_compare_times():
     print(f'time execution for                  selection_sort:  {time_selection_sort}')
 
 
+    time_dec_bubble_sort = timeit.timeit(
+        f'dec_bubble_sort("{first_string}", "{second_string}")',
+        setup=f"{setup_dec_bubble_sort}",
+        number=10000,
+    )
+    print(f'time execution for                  dec_bubble_sort:  {time_dec_bubble_sort}')
+
+
     time_bubble_sort = timeit.timeit(
         f'bubble_sort("{first_string}", "{second_string}")',
         setup=f"{setup_bubble_sort}",
@@ -217,6 +226,12 @@ def test_compare_times():
         number=10000,
     )
 
+    second_time_dec_bubble_sort = timeit.timeit(
+        f'dec_bubble_sort("{all_chars_once}", "{second_string}")',
+        setup=f"{setup_dec_bubble_sort}",
+        number=10000,
+    )
+
     times_q_b_f = sorted(
         {'Counter() from typing': second_time_is_anagram,
         'remove_chars_list': second_time_remove_chars_list,
@@ -230,9 +245,118 @@ def test_compare_times():
         'merge_sort': second_time_merge_sort,
         'insertion_sort': second_time_insertion_sort,
         'selection_sort': second_time_selection_sort,
-        'bubble_sort': second_time_bubble_sort}.items(), key=lambda x:x[1]
+        'bubble_sort': second_time_bubble_sort,
+        'dec_bubble_sort': second_time_dec_bubble_sort}.items(), key=lambda x:x[1]
         )
 
     print(f'\nanagram check, two identical strings:\n"the quick brown fox jump over the lazy dog"\n algorithm comparison execution times are:')    
     for t in times_q_b_f:
+        print(f"time execution for {t[0] : >30}:   {t[1] : >5}")
+
+    short_string = 'evil'
+    short_str_anagram = 'vile'
+
+    third_time_is_anagram = timeit.timeit(
+        f'is_anagram("{short_string}", "{short_str_anagram}")',
+        setup=f"{setup_import}",
+        number=10000,
+    )
+
+    third_time_remove_chars_list = timeit.timeit(
+        f'remove_chars_list("{short_string}", "{short_str_anagram}")',
+        setup=f"{setup_remove_chars_list}",
+        number=10000,
+    )
+
+    third_time_generate_counter_dict = timeit.timeit(
+        f'generate_counter_dict("{short_string}", "{short_str_anagram}")',
+        setup=f"{setup_generate_counter_dict}",
+        number=10000,
+    )
+
+    third_time_recursive_dict = timeit.timeit(
+        f'recursive_dict("{short_string}", "{short_str_anagram}")',
+        setup=f"{setup_recursive_dict}",
+        number=10000,
+    )
+
+    third_time_slow_gen_counter_dict = timeit.timeit(
+        f'slow_gen_counter_dict("{short_string}", "{short_str_anagram}")',
+        setup=f"{setup_slow_gen_counter_dict}",
+        number=10000,
+    )
+
+    third_time_remove_chars = timeit.timeit(
+        f'remove_chars("{short_string}", "{short_str_anagram}")',
+        setup=f"{setup_remove_chars}",
+        number=10000,
+    )
+
+    third_time_slow_dict = timeit.timeit(
+        f'slow_dict("{short_string}", "{short_str_anagram}")',
+        setup=f"{setup_slow_dict}",
+        number=10000,
+    )
+
+    third_time_heap_sort = timeit.timeit(
+        f'heap_sort("{short_string}", "{short_str_anagram}")',
+        setup=f"{setup_heap_sort}",
+        number=10000,
+    )
+
+    third_time_bubble_sort = timeit.timeit(
+        f'bubble_sort("{short_string}", "{short_str_anagram}")',
+        setup=f"{setup_bubble_sort}",
+        number=10000,
+    )
+
+    third_time_insertion_sort = timeit.timeit(
+        f'insertion_sort("{short_string}", "{short_str_anagram}")',
+        setup=f"{setup_insertion_sort}",
+        number=10000,
+    )
+
+    third_time_merge_sort = timeit.timeit(
+        f'merge_sort("{short_string}", "{short_str_anagram}")',
+        setup=f"{setup_merge_sort}",
+        number=10000,
+    )
+
+    third_time_quicksort = timeit.timeit(
+        f'quicksort("{short_string}", "{short_str_anagram}")',
+        setup=f"{setup_quicksort}",
+        number=10000,
+    )
+
+    third_time_selection_sort = timeit.timeit(
+        f'selection_sort("{short_string}", "{short_str_anagram}")',
+        setup=f"{setup_selection_sort}",
+        number=10000,
+    )
+
+    third_time_dec_bubble_sort = timeit.timeit(
+        f'dec_bubble_sort("{short_string}", "{short_str_anagram}")',
+        setup=f"{setup_dec_bubble_sort}",
+        number=10000,
+    )
+
+    times_short_string = sorted(
+        {'Counter() from typing': third_time_is_anagram,
+        'remove_chars_list': third_time_remove_chars_list,
+        'generate_counter_dict': third_time_generate_counter_dict,
+        'recursive_dict': third_time_recursive_dict,
+        'slow_gen_counter_dict': third_time_slow_gen_counter_dict,
+        'remove_chars': third_time_remove_chars,
+        'slow_dict': third_time_slow_dict,
+        'heap_sort': third_time_heap_sort,
+        'quicksort': third_time_quicksort,
+        'merge_sort': third_time_merge_sort,
+        'insertion_sort': third_time_insertion_sort,
+        'selection_sort': third_time_selection_sort,
+        'bubble_sort': third_time_bubble_sort,
+        'dec_bubble_sort': third_time_dec_bubble_sort}.items(), key=lambda x:x[1]
+        )
+
+    print(f'\nanagram check, two short anagrams strings:\n"evil | vile"\n algorithm comparison execution times are:')    
+    for t in times_short_string:
         print(f"time execution for {t[0] : >30}:   {t[1] : >5}")
