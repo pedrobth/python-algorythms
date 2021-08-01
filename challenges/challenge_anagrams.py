@@ -2,7 +2,7 @@ from typing import Counter
 
 
 """Although to run a serious benchmark the machine should run ONLY the program,
-the execution times commented bellow might represent
+the execution times commented bellow - for a lorem text with  might represent
 a comparison of those algorithms"""
 
 
@@ -208,18 +208,26 @@ def selection_sort_str(string):
         str_list[i], str_list[min_index] = str_list[min_index], str_list[i]
     return str_list
 
-
+def dec_b_sort(string):
+    s_list = list(string)
+    for index in range(len(s_list) - 1, 0, -1):
+        for s in range(index):
+            if s_list[s] > s_list[s + 1]:
+                s_list[s], s_list[s + 1] = s_list[s + 1], s_list[s]
+    return s_list
+def dec_bubble_sort(first_string, second_string):
+    return dec_b_sort(first_string) == dec_b_sort(second_string)
 
 # 14.596026 seconds
-def b_sort(nums):
+def b_sort(string):
     # We set swapped to True so the loop looks runs at least once
     swapped = True
     while swapped:
         swapped = False
-        for i in range(len(nums) - 1):
-            if nums[i] > nums[i + 1]:
+        for i in range(len(string) - 1):
+            if string[i] > string[i + 1]:
                 # Swap the elements
-                nums[i], nums[i + 1] = nums[i + 1], nums[i]
+                string[i], string[i + 1] = string[i + 1], string[i]
                 # Set the flag to True so we'll loop again
                 swapped = True
 # 14.596026 seconds complexity O(n^2)
@@ -237,11 +245,3 @@ def is_anagram(first_string, second_string):
     # Counter py method turned to be the fastest - I am not surprised at all
     # 0.076248 ~ 0.09043 seconds
     return Counter(first_string) == Counter(second_string)
-
-
-# first_string = (
-#         "Lorem ipsum dolor sit amer, consectetur "
-#         "adipiscing elit, do sed eiusmod tempor "
-#         "incididint ut labore et dolore magna aliqua"
-#     )
-# bucket_sort(first_string, first_string)
