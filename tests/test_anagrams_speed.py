@@ -31,7 +31,7 @@ def test_compare_times():
         setup=f"{setup_import}",
         number=10000,
     )
-    print(f'\n anagram check, two identical strings:\n"Lorem ipsum dolor sit amer, consectetur adipiscing elit, do sed eiusmod tempor incididint ut labore et dolore magna aliqua" execution times are:')
+    print(f'\n anagram check, two identical strings:\n"Lorem ipsum dolor sit amer, consectetur adipiscing elit, do sed eiusmod tempor incididint ut labore et dolore magna aliqua"\n algorithm comparison execution times are:')
     print(f'\ntime execution for           Counter() from typing:  {time_is_anagram}')
 
 
@@ -233,6 +233,6 @@ def test_compare_times():
         'bubble_sort': second_time_bubble_sort}.items(), key=lambda x:x[1]
         )
 
-    print(f'\nanagram check, two identical strings:\n"the quick brown fox jump over the lazy dog" comparison execution times are:')    
+    print(f'\nanagram check, two identical strings:\n"the quick brown fox jump over the lazy dog"\n algorithm comparison execution times are:')    
     for t in times_q_b_f:
         print(f"time execution for {t[0] : >30}:   {t[1] : >5}")
