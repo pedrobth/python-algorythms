@@ -1,15 +1,17 @@
-from challenges.challenge_anagrams import is_anagram, remove_chars_list, generate_counter_dict, recursive_dict, slow_gen_counter_dict, remove_chars, slow_dict, quicksort, selection_sort
+from challenges.challenge_anagrams import bubble_sort, insertion_sort, is_anagram, remove_chars_list, generate_counter_dict, recursive_dict, slow_gen_counter_dict, remove_chars, slow_dict, heap_sort, quicksort, selection_sort
 import timeit
 
 def test_compare_times():
     setup_import = "from challenges.challenge_anagrams" " import is_anagram"
-    setup_Counter = "from challenges.challenge_anagrams" " import is_anagram"
     setup_remove_chars_list = "from challenges.challenge_anagrams" " import remove_chars_list"
     setup_generate_counter_dict = "from challenges.challenge_anagrams" " import generate_counter_dict"
     setup_recursive_dict = "from challenges.challenge_anagrams" " import recursive_dict"
     setup_slow_gen_counter_dict = "from challenges.challenge_anagrams" " import slow_gen_counter_dict"
     setup_remove_chars = "from challenges.challenge_anagrams" " import remove_chars"
     setup_slow_dict = "from challenges.challenge_anagrams" " import slow_dict"
+    setup_heap_sort = "from challenges.challenge_anagrams" " import heap_sort"
+    setup_bubble_sort = "from challenges.challenge_anagrams" " import bubble_sort"
+    setup_insertion_sort = "from challenges.challenge_anagrams" " import insertion_sort"
     setup_quicksort = "from challenges.challenge_anagrams" " import quicksort"
     setup_selection_sort = "from challenges.challenge_anagrams" " import selection_sort"
 
@@ -106,6 +108,41 @@ def test_compare_times():
     ), f"Falhou, o tempo foi: {time_slow_dict}, algoritmo correto? {algorithms_correct}"
 
 
+    algorithms_correct = heap_sort(first_string, second_string) is True
+    time_heap_sort = timeit.timeit(
+        f'heap_sort("{first_string}", "{second_string}")',
+        setup=f"{setup_heap_sort}",
+        number=10000,
+    )
+    correct_time = time_heap_sort <= 7.2
+    assert (
+        algorithms_correct and correct_time
+    ), f"Falhou, o tempo foi: {time_heap_sort}, algoritmo correto? {algorithms_correct}"
+
+
+    algorithms_correct = bubble_sort(first_string, second_string) is True
+    time_bubble_sort = timeit.timeit(
+        f'bubble_sort("{first_string}", "{second_string}")',
+        setup=f"{setup_bubble_sort}",
+        number=10000,
+    )
+    correct_time = time_bubble_sort <= 15
+    assert (
+        algorithms_correct and correct_time
+    ), f"Falhou, o tempo foi: {time_bubble_sort}, algoritmo correto? {algorithms_correct}"
+
+
+    algorithms_correct = insertion_sort(first_string, second_string) is True
+    time_insertion_sort = timeit.timeit(
+        f'insertion_sort("{first_string}", "{second_string}")',
+        setup=f"{setup_insertion_sort}",
+        number=10000,
+    )
+    correct_time = time_insertion_sort <= 7.2
+    assert (
+        algorithms_correct and correct_time
+    ), f"Falhou, o tempo foi: {time_insertion_sort}, algoritmo correto? {algorithms_correct}"
+
     algorithms_correct = quicksort(first_string, second_string) is True
     time_quicksort = timeit.timeit(
         f'quicksort("{first_string}", "{second_string}")',
@@ -135,7 +172,10 @@ def test_compare_times():
     print(f'time execution for         slow_gen_counter_dict:  {time_slow_gen_counter_dict}')
     print(f'time execution for                  remove_chars:  {time_remove_chars}')
     print(f'time execution for                     slow_dict:  {time_slow_dict}')
+    print(f'time execution for                     heap_sort:  {time_heap_sort}')
     print(f'time execution for                     quicksort:  {time_quicksort}')
+    print(f'time execution for                insertion_sort:  {time_insertion_sort}')
     print(f'time execution for                selection_sort:  {time_selection_sort}')
+    print(f'time execution for                   bubble_sort:  {time_bubble_sort}')
 
 
