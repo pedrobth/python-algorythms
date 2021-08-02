@@ -56,40 +56,40 @@ def test_compare_times():
     lorem_o_t_t = "do sed eiusmod tempor incididint ut labore et dolore magna" \
     + " aliqua Lorem ipsum dolor sit amer, consectetur adipiscing elit,"
 
-    print('\n anagram check, two identical strings:')
-    print(f'{lorem_text}"\n algorithm comparison execution times are:')
+    print('\nanagram check, two identical strings 133 chars:')
+    print(f'{lorem_text}"\nalgorithm execution times are:')
 
     handle_loops(lorem_text, lorem_o_t_t)
 
     all_chars_once = "the quick brown fox jumps over the lazy dog"
     a_chars_o = "god yzal eht revo spmuj xof nworb kciuq eht"
     print('\nanagram check, two anagrams strings:')
-    print(f'"{all_chars_once}" algorithm comparison execution times are:')
+    print(f'"{all_chars_once}" | ""{a_chars_o}\nalgorithm execution times are:')
     handle_loops(all_chars_once, a_chars_o)
 
     short_string = 'evil'
     short_str_anagram = 'vile'
     print('\nanagram check, two short anagrams strings:')
-    print('"evil | vile"\n algorithm comparison execution times are:')
+    print('"evil | vile"\nalgorithm execution times are:')
     handle_loops(short_str_anagram, short_string)
 
     short_not_anagram = 'not anagram'
     short_n_angr = 'not anagran'
-    print(
-        '\n "not anagram" compared to "not anagraN" algorithm comparison '
-        'execution times are:')
+    print('\nanagram check, fail test case:'
+        '\n"not anagram" | "not anagraN"\nalgorithm execution times are:')
     handle_loops(short_not_anagram, short_n_angr)
 
     lorem_fail = "Lorem ipsum dolor sit amer, consectetur adipiscing elit, du" \
     + " sed eiusmod tempor incididint ut labore et dolore magna aliqua"
     lorem_f = "Lorem ipsum dolor sit amer, consectetur adipiscing elit, du" \
-    + " sed eiusmod tempor incididint ut labore et dolore magna aliquz"
-    print(f'\n anagram check "{lorem_fail}" fail execution test')
+    + " sed eiusmod tempor incididint ut labore et dolore magna aliquZ"
+    print(f'\nanagram check, fail test case:\n"{lorem_fail}"\n' \
+        + f'"{lorem_f}"\nalgorithm execution times are:')
     handle_loops(lorem_fail, lorem_f)
 
     all_times_sorted = sorted(
         all_test_algorithm_sum.items(), key=lambda x: x[1]
     )
-    print('\ntime sum of algorithms execution for all the cases above are:\n')
+    print('\n\ntime sum of algorithms execution for all the cases above are:\n')
     for t in all_times_sorted:
         print(f"time execution for {t[0] : >30}:   {t[1] :>5}")
