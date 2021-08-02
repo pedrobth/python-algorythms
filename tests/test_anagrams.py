@@ -6,18 +6,7 @@ class RequirementViolated(Exception):
     pass
 
 
-def valida_se_nao_foi_usado_sort_padrao():
-    with open("challenges/challenge_anagrams.py", "r") as python_file:
-        source = python_file.read()
-        if "sorted(" in source or ".sort(" in source:
-            raise RequirementViolated(
-                "Você deve fazer sua própria implementação "
-                "do algoritmo de ordenação!"
-            )
-
-
 def test_validar_se_as_palavras_nao_sao_um_anagrama():
-    valida_se_nao_foi_usado_sort_padrao()
 
     first_string = "pedra"
     second_string = "perdaaa"
@@ -33,7 +22,6 @@ def test_validar_se_as_palavras_nao_sao_um_anagrama():
 
 
 def test_validar_se_as_palavras_sao_um_anagrama():
-    valida_se_nao_foi_usado_sort_padrao()
 
     first_string = "pedra"
     second_string = "perda"
@@ -41,7 +29,6 @@ def test_validar_se_as_palavras_sao_um_anagrama():
 
 
 def test_valida_palavra_em_branco_retorna_false():
-    valida_se_nao_foi_usado_sort_padrao()
 
     first_string = ""
     second_string = "perda"
@@ -53,7 +40,6 @@ def test_valida_palavra_em_branco_retorna_false():
 
 
 def test_validar_tempo_anagrama():
-    valida_se_nao_foi_usado_sort_padrao()
 
     setup_import = "from challenges.challenge_anagrams " "import is_anagram"
     first_string = (
