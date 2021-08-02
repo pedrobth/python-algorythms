@@ -241,6 +241,7 @@ def dec_b_sort(string):
                 s_list[s], s_list[s + 1] = s_list[s + 1], s_list[s]
     return s_list
 
+
 # complexity O(n^2)
 def dec_bubble_sort(first_string, second_string):
     return dec_b_sort(first_string) == dec_b_sort(second_string)
