@@ -50,11 +50,11 @@ def handle_loops(first_str, second_str):
 
 def test_compare_times():
 
-    lorem_text = "Lorem ipsum dolor sit amer, consectetur adipiscing"
-    "elit, do sed eiusmod tempor incididint ut labore et dolore magna aliqua"
+    lorem_text = "Lorem ipsum dolor sit amer, consectetur adipiscing" \
+    + "elit, do sed eiusmod tempor incididint ut labore et dolore magna aliqua"
 
-    lorem_o_t_t = "do sed eiusmod tempor incididint ut labore et dolore magna"
-    " aliqua Lorem ipsum dolor sit amer, consectetur adipiscing elit,"
+    lorem_o_t_t = "do sed eiusmod tempor incididint ut labore et dolore magna" \
+    + " aliqua Lorem ipsum dolor sit amer, consectetur adipiscing elit,"
 
     print('\n anagram check, two identical strings:')
     print(f'{lorem_text}"\n algorithm comparison execution times are:')
@@ -80,10 +80,12 @@ def test_compare_times():
         'execution times are:')
     handle_loops(short_not_anagram, short_n_angr)
 
-    lorem_fail = "Lorem ipsum dolor sit amer, consectetur adipiscing elit, du "
-    "sed eiusmod tempor incididint ut labore et dolore magna aliqua"
+    lorem_fail = "Lorem ipsum dolor sit amer, consectetur adipiscing elit, du" \
+    + " sed eiusmod tempor incididint ut labore et dolore magna aliqua"
+    lorem_f = "Lorem ipsum dolor sit amer, consectetur adipiscing elit, du" \
+    + " sed eiusmod tempor incididint ut labore et dolore magna aliquz"
     print(f'\n anagram check "{lorem_fail}" fail execution test')
-    handle_loops(lorem_fail, short_n_angr)
+    handle_loops(lorem_fail, lorem_f)
 
     all_times_sorted = sorted(
         all_test_algorithm_sum.items(), key=lambda x: x[1]
