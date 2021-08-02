@@ -1,4 +1,3 @@
-from challenges.challenge_anagrams import bubble_sort, insertion_sort, is_anagram, remove_chars_list, generate_counter_dict, recursive_dict, slow_gen_counter_dict, remove_chars, slow_dict, heap_sort, quicksort, selection_sort, merge_sort, dec_bubble_sort, py_sort
 import timeit
 
 
