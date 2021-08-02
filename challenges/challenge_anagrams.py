@@ -83,6 +83,7 @@ def slow_dict(f_str, s_str):
     return first_dict == second_dict
 
 
+# complexity O(n^2)
 def quicksort(first_string, second_string):
     return quicksort_str(
         list(first_string), 0, len(first_string) - 1
@@ -162,11 +163,12 @@ def m_sort(string):
     return merge(left_list, right_list)
 
 
+# complexity O(n log(n))
 def merge_sort(first_string, second_string):
     return m_sort(list(first_string)) == m_sort(list(second_string))
 
 
-# complexity O(nlog(n))
+# complexity O(n log(n))
 def heapify(str_list, heap_size, root_index):
     largest = root_index
     left_child = (2 * root_index) + 1
@@ -196,6 +198,7 @@ def heap_st(string):
         heapify(str_list, i, 0)
 
 
+# complexity O(n log(n))
 def heap_sort(first_string, second_string):
     return heap_st(first_string) == heap_st(second_string)
 
@@ -210,10 +213,12 @@ def insertion_s(x):
         x[j + 1] = item_to_insert
 
 
+# complexity O(n^2)
 def insertion_sort(first_string, second_string):
     return insertion_s(list(first_string)) == insertion_s(list(second_string))
 
 
+# complexity O(n^2)
 def selection_sort(first_str, second_str):
     return selection_sort_str(first_str) == selection_sort_str(second_str)
 
@@ -237,7 +242,7 @@ def dec_b_sort(string):
                 s_list[s], s_list[s + 1] = s_list[s + 1], s_list[s]
     return s_list
 
-
+# complexity O(n^2)
 def dec_bubble_sort(first_string, second_string):
     return dec_b_sort(first_string) == dec_b_sort(second_string)
 
@@ -255,8 +260,14 @@ def b_sort(string):
                 swapped = True
 
 
+# complexity O(n^2)
 def bubble_sort(first_string, second_string):
     return b_sort(list(first_string)) == b_sort(list(second_string))
+
+
+# tim sort https://en.wikipedia.org/wiki/Timsort complexity O(n log n)
+def py_sort(f_str, s_str):
+    return f_str.sort() == s_str.sort()
 
 
 def is_anagram(first_string, second_string):
