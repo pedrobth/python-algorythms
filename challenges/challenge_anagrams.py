@@ -169,21 +169,20 @@ def merge_sort(first_string, second_string):
 
 
 # complexity O(n log(n))
-def heapify(str_list, heap_size, root_index):
-    largest = root_index
-    left_child = (2 * root_index) + 1
-    right_child = (2 * root_index) + 2
+def heapify(str_list, heap_size, r_index):
+    limit = r_index
+    left_child = (2 * r_index) + 1
+    right_child = (2 * r_index) + 2
 
-    if left_child < heap_size and str_list[left_child] > str_list[largest]:
-        largest = left_child
+    if left_child < heap_size and str_list[left_child] > str_list[limit]:
+        limit = left_child
 
-    if right_child < heap_size and str_list[right_child] > str_list[largest]:
-        largest = right_child
+    if right_child < heap_size and str_list[right_child] > str_list[limit]:
+        limit = right_child
 
-    if largest != root_index:
-        str_list[root_index], str_list[largest] = str_list[largest],
-        str_list[root_index]
-        heapify(str_list, heap_size, largest)
+    if limit != r_index:
+        str_list[r_index], str_list[limit] = str_list[limit], str_list[r_index]
+        heapify(str_list, heap_size, limit)
 
 
 def heap_st(string):
@@ -267,7 +266,7 @@ def bubble_sort(first_string, second_string):
 
 # tim sort https://en.wikipedia.org/wiki/Timsort complexity O(n log n)
 def py_sort(f_str, s_str):
-    return f_str.sort() == s_str.sort()
+    return list(f_str).sort() == list(s_str).sort()
 
 
 def is_anagram(first_string, second_string):
