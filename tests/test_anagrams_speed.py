@@ -103,7 +103,12 @@ def test_compare_times():
     print('\nanagram check, fail test case:'
         f'\n"{all_diff}" | "{all_diff_dif}"\nalgorithm execution times are:')
     handle_loops(all_diff, all_diff_dif)
+    
+    long_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum ut tristique et egestas quis ipsum. Sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus. Integer quis auctor elit sed. Id aliquet risus feugiat in ante metus dictum at. Congue eu consequat ac felis donec et odio pellentesque diam. Consectetur adipiscing elit pellentesque habitant morbi tristique senectus et. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed. Lobortis elementum nibh tellus molestie nunc non. Turpis egestas pretium aenean pharetra magna ac. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci a. At risus viverra adipiscing at in tellus integer feugiat scelerisque. Vulputate dignissim suspendisse in est ante in. Ultrices dui sapien eget mi proin sed libero. Id cursus metus aliquam eleifend mi in nulla. Mattis pellentesque id nibh tortor. Hendrerit dolor magna eget est lorem ipsum dolor sit amet. Senectus et netus et malesuada fames ac turpis egestas maecenas. Bibendum neque egestas congue quisque egestas diam in. Leo vel orci porta non pulvinar neque laoreet. Sem integer vitae justo eget magna fermentum iaculis. Amet justo donec enim diam vulputate ut pharetra sit. Sit amet purus gravida quis blandit turpis cursus in hac. Ac feugiat sed lectus vestibulum. At auctor urna nunc id cursus metus. Sed ullamcorper morbi tincidunt ornare massa. Eget velit aliquet sagittis id. Turpis in eu mi bibendum neque. Condimentum vitae sapien pellentesque habitant morbi tristique. Habitant morbi tristique senectus et netus et malesuada frames ac.'
 
+    print('\nanagram check, reversed text comparison test case:'
+        f'\n"long_lorem" | "reversed(long_lorem) 1640 chars each"\nalgorithm execution times are:')
+    handle_loops(long_lorem, reversed(long_lorem))
     all_times_sorted = sorted(
         all_test_algorithm_sum.items(), key=lambda x: x[1]
     )
