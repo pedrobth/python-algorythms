@@ -92,6 +92,12 @@ def test_compare_times():
         f'\n"{repeat_char}"\nalgorithm execution times are:')
     handle_loops(repeat_char, repeat_char)
 
+    repeat_char = 'aaaaaaaa'
+    repeat_char_dif = 'aaaaaaab'
+    print('\nanagram check, fail test case:'
+        f'\n"{repeat_char}" | "{repeat_char_dif}"\nalgorithm execution times are:')
+    handle_loops(repeat_char, repeat_char_dif)
+
     
     all_times_sorted = sorted(
         all_test_algorithm_sum.items(), key=lambda x: x[1]
