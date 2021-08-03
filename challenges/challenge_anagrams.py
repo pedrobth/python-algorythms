@@ -83,7 +83,7 @@ def slow_dict(f_str, s_str):
     return first_dict == second_dict
 
 
-# complexity O(n^2)
+# complexity O(n log n)
 def quicksort(first_string, second_string):
     return quicksort_str(
         list(first_string), 0, len(first_string) - 1
@@ -271,12 +271,12 @@ def py_sort(f_str, s_str):
 
 
 def is_anagram(first_string, second_string):
-    if (
-        not isinstance(first_string, str)
-        or not isinstance(second_string, str)
-        or len(first_string) != len(second_string)
-    ):
-        return False
+    # if (
+    #     not isinstance(first_string, str)
+    #     or not isinstance(second_string, str)
+    #     or len(first_string) != len(second_string)
+    # ):
+    #     return False
 
     # Counter py method turned to be the fastest - I am not surprised at all
     return Counter(first_string) == Counter(second_string)
