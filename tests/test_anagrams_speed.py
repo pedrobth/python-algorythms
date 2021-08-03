@@ -64,7 +64,7 @@ def test_compare_times():
     all_chars_once = "the quick brown fox jumps over the lazy dog"
     a_chars_o = "god yzal eht revo spmuj xof nworb kciuq eht"
     print('\nanagram check, two anagrams strings:')
-    print(f'"{all_chars_once}" | ""{a_chars_o}\nalgorithm execution times are:')
+    print(f'"{all_chars_once}" | "{a_chars_o}"\nalgorithm execution times are:')
     handle_loops(all_chars_once, a_chars_o)
 
     short_string = 'evil'
@@ -87,9 +87,11 @@ def test_compare_times():
         + f'"{lorem_f}"\nalgorithm execution times are:')
     handle_loops(lorem_fail, lorem_f)
 
+
+
     all_times_sorted = sorted(
         all_test_algorithm_sum.items(), key=lambda x: x[1]
     )
-    print('\n\ntime sum of algorithms execution for all the cases above are:\n')
+    print('\ntime sum of algorithms execution for all the cases above are:\n')
     for t in all_times_sorted:
         print(f"time execution for {t[0] : >30}:   {t[1] :>5}")
