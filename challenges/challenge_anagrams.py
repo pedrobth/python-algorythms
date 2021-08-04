@@ -36,6 +36,15 @@ def gen_dict(lista):
 
     return dic
 
+def smart_dict(first_string, second_string):
+    return s_dict(first_string) == s_dict(second_string)
+
+def s_dict(string):
+    str_dict = {}
+    while len(string) > 0:
+        str_dict[string[0]] = string.count(string[0])
+        string = string.replace(string[0], '')
+    return str_dict
 
 def recursive_dict(first_str, second_str):
     return str_to_dict_recusrsive(
