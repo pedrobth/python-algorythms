@@ -280,3 +280,11 @@ def is_anagram(first_string, second_string):
 
     # Counter py method turned to be the fastest - I am not surprised at all
     return Counter(first_string) == Counter(second_string)
+
+
+# this was a sugestion from https://github.com/EliasCarvalho20 at https://github.com/pedrobth/python-algorythms/commit/0bb76c3c82f693401989bf6e12e3772b46149af8#comments
+# although it might fail in some cases Eg. first_string = ade second_string = bce returning true when it should not, the execution time is fast and could be used as a first filter.
+def unicode_sum(first_string, second_string):
+    return sum(ord(s) for s in first_string) == sum(
+        ord(s) for s in second_string
+    )
