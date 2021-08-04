@@ -33,6 +33,7 @@ def handle_loops(first_str, second_str):
         "selection_sort",
         "dec_bubble_sort",
         "py_sort",
+        "unicode_sum"
     )
     times_dict = {}
     for method in methods_list:
